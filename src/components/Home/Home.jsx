@@ -4,24 +4,23 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 
 const Home = () => {
-  const [isLoading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [trendingMovies, setTrendingMovies] = useState([]);
 
   useEffect(() => {
     const loadMovies = async () => {
-      setLoading(true);
+      setIsLoading(true);
 
       try {
         const response = await fetchTrandingMovies(1);
         return response.results.map(movie => ({
           id: movie.id,
-          title: movie.original_title,
+          title: movie.title,
         }));
       } catch (error) {
         console.error(error);
-        return;
       } finally {
-        setLoading(false);
+        setIsLoading(false);
       }
     };
 
@@ -33,6 +32,8 @@ const Home = () => {
       <h1>Tredning movies</h1>
       {isLoading && <p>Loading...</p>}
       {!isLoading &&
+        trendingMovies &&
+        trendingMovies.length > 0 &&
         trendingMovies.map(movie => (
           <li key={movie.id}>
             <Link to={`movies/${movie.id}`}>{movie.title}</Link>
