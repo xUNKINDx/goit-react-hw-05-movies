@@ -3,6 +3,7 @@ import MovieDetails from './MovieDetails/MovieDetails';
 import Cast from './MovieDetails/Cast/Cast';
 import { Routes, Route } from 'react-router-dom';
 import Home from './Home/Home';
+import Reviews from './MovieDetails/Reviews/Reviews';
 
 const App = () => {
   return (
@@ -13,7 +14,7 @@ const App = () => {
         {/* <Route path="/movies" element={<></>}/> */}
         <Route path="/movies/:movieId" element={<MovieDetails />}>
           <Route path="/movies/:movieId/cast" element={<Cast />} />
-          {/* <Route path="/reviews" element={<></>}/> */}
+          <Route path="/movies/:movieId/reviews" element={<Reviews />} />
         </Route>
       </Routes>
     </>

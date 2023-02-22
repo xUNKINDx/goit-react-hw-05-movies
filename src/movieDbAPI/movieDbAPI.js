@@ -43,6 +43,12 @@ async function getCast(movieId) {
   return await getRequest(url);
 }
 
+async function getReviews(movieId) {
+  const url = `${URI}/movie/${movieId}/reviews?api_key=${API_KEY}`;
+
+  return await getRequest(url);
+}
+
 // async function getMovieVideo(movieId) {
 //   const url = `${URI}/movie/${movieId}/videos?api_key=${API_KEY}`;
 
@@ -65,4 +71,5 @@ export {
   getGenres,
   // getMovieVideo,
   getCast,
+  getReviews,
 };
