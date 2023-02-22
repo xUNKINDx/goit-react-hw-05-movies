@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const API_KEY = 'bc23d88e8c379b88dcc9e69c75bc8f78';
 const URI = 'https://api.themoviedb.org/3';
-const MOVIE_GENRES = 'movie-genres';
+// const MOVIE_GENRES = 'movie-genres';
 
 async function fetchTrandingMovies(page) {
   const url = `${URI}/trending/movie/day?api_key=${API_KEY}&page=${page}`;
@@ -24,18 +24,18 @@ async function getMovieById(movieId) {
   return await getRequest(url);
 }
 
-async function getGenres() {
-  const url = `${URI}/genre/movie/list?api_key=${API_KEY}`;
+// async function getGenres() {
+//   const url = `${URI}/genre/movie/list?api_key=${API_KEY}`;
 
-  let genres = localStorage.getItem(MOVIE_GENRES);
-  if (genres) {
-    return JSON.parse(genres);
-  } else {
-    genres = await getRequest(url);
-    localStorage.setItem(MOVIE_GENRES, JSON.stringify(genres.genres));
-    return genres.genres;
-  }
-}
+//   let genres = localStorage.getItem(MOVIE_GENRES);
+//   if (genres) {
+//     return JSON.parse(genres);
+//   } else {
+//     genres = await getRequest(url);
+//     localStorage.setItem(MOVIE_GENRES, JSON.stringify(genres.genres));
+//     return genres.genres;
+//   }
+// }
 
 async function getCast(movieId) {
   const url = `${URI}/movie/${movieId}/credits?api_key=${API_KEY}`;
@@ -68,7 +68,7 @@ export {
   fetchTrandingMovies,
   searchMovies,
   getMovieById,
-  getGenres,
+  // getGenres,
   // getMovieVideo,
   getCast,
   getReviews,

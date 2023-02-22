@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getReviews } from 'movieDbAPI/movieDbAPI';
+import Loader from 'components/Loader/Loader';
 
 const Reviews = () => {
   const [reviews, setReviews] = useState(null);
@@ -29,7 +30,7 @@ const Reviews = () => {
     <>
       <hr />
       <section>
-        {isLoading && <p>Loading...</p>}
+        {isLoading && <Loader />}
         {!isLoading && reviews && (
           <ul>
             {reviews.map(review => (

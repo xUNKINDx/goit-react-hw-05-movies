@@ -1,12 +1,15 @@
 import { useState, useEffect } from 'react';
-import { useParams, Link, Outlet } from 'react-router-dom';
+import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
 import { getMovieById } from 'movieDbAPI/movieDbAPI';
+import Loader from 'components/Loader/Loader';
 
 const MovieDetails = () => {
   const [movieDetails, setMovieDetail] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
   const { movieId } = useParams();
+  const location = useLocation();
+  const backLinkHref = location.state?.from ?? '/';
 
   useEffect(() => {
     const loadMovieDetails = async () => {
@@ -28,11 +31,9 @@ const MovieDetails = () => {
   return (
     <>
       <div>
-        <button type="button" name="goBack">
-          Go Back
-        </button>
+        <Link to={backLinkHref}>Go back</Link>
       </div>
-      {isLoading && <p>Loading...</p>}
+      {isLoading && <Loader />}
       {!isLoading && movieDetails && (
         <div>
           <section>
@@ -46,7 +47,7 @@ const MovieDetails = () => {
               <h3>Overview</h3>
               <p>{movieDetails.overview}</p>
               <h3>Genres</h3>
-              <p>TODO</p>
+              <p>{movieDetails.genres.map(genre => genre.name).join(', ')}</p>
             </div>
           </section>
           <hr />

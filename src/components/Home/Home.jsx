@@ -2,10 +2,11 @@ import { Link } from 'react-router-dom';
 import { fetchTrandingMovies } from 'movieDbAPI/movieDbAPI';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import Loader from 'components/Loader/Loader';
 
 const Home = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [trendingMovies, setTrendingMovies] = useState([]);
+  const [trendingMovies, setTrendingMovies] = useState(null);
 
   useEffect(() => {
     const loadMovies = async () => {
@@ -30,13 +31,14 @@ const Home = () => {
   return (
     <>
       <h1>Tredning movies</h1>
-      {isLoading && <p>Loading...</p>}
+      {isLoading && <Loader />}
       {!isLoading &&
         trendingMovies &&
-        trendingMovies.length > 0 &&
         trendingMovies.map(movie => (
           <li key={movie.id}>
-            <Link to={`movies/${movie.id}`}>{movie.title}</Link>
+            <Link to={`movies/${movie.id}`} state={{ from: '/' }}>
+              {movie.title}
+            </Link>
           </li>
         ))}
     </>
