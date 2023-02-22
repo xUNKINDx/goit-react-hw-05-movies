@@ -26,6 +26,7 @@ const MovieDetails = () => {
     };
 
     loadMovieDetails().then(result => setMovieDetail(result));
+    // eslint-disable-next-line
   }, []);
 
   return (

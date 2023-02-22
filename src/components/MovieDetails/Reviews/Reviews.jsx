@@ -24,6 +24,7 @@ const Reviews = () => {
     };
 
     loadReviews().then(result => setReviews(result.results));
+    // eslint-disable-next-line
   }, []);
 
   return (

@@ -24,6 +24,7 @@ const Cast = () => {
     };
 
     loadCast().then(result => setCast(result.cast));
+    // eslint-disable-next-line
   }, []);
 
   return (
