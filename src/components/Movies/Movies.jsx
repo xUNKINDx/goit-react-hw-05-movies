@@ -32,21 +32,35 @@ const Movies = () => {
   return (
     <>
       <div>
-        <form>
-          <input type="text" name="query" autoComplete="off" />
-          <button type="submit">Search</button>
+        <form className="form-block">
+          <input
+            className="form-block__input"
+            type="text"
+            name="query"
+            autoComplete="off"
+          />
+          <button className="form-block__submit" type="submit">
+            Search
+          </button>
         </form>
       </div>
-      {isLoading && <Loader />}
-      {!isLoading &&
-        movies &&
-        movies.map(movie => (
-          <li key={movie.id}>
-            <Link to={`${movie.id}`} state={{ from: `/movies?query=${query}` }}>
-              {movie.title}
-            </Link>
-          </li>
-        ))}
+      <div className='movies-list'>
+        <ul>
+          {isLoading && <Loader />}
+          {!isLoading &&
+            movies &&
+            movies.map(movie => (
+              <li className='movie' key={movie.id}>
+                <Link
+                  to={`${movie.id}`}
+                  state={{ from: `/movies?query=${query}` }}
+                >
+                  {movie.title}
+                </Link>
+              </li>
+            ))}
+        </ul>
+      </div>
     </>
   );
 };

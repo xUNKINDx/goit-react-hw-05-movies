@@ -30,17 +30,21 @@ const Home = () => {
 
   return (
     <>
-      <h1>Tredning movies</h1>
-      {isLoading && <Loader />}
-      {!isLoading &&
-        trendingMovies &&
-        trendingMovies.map(movie => (
-          <li key={movie.id}>
-            <Link to={`movies/${movie.id}`} state={{ from: '/' }}>
-              {movie.title}
-            </Link>
-          </li>
-        ))}
+      <h1 className='main-title'>Tredning movies</h1>
+      <div className='movies-list'>
+        <ul>
+          {isLoading && <Loader />}
+          {!isLoading &&
+            trendingMovies &&
+            trendingMovies.map(movie => (
+              <li key={movie.id}>
+                <Link to={`movies/${movie.id}`} state={{ from: '/' }}>
+                  {movie.title}
+                </Link>
+              </li>
+            ))}
+        </ul>
+      </div>
     </>
   );
 };

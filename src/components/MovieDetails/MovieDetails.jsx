@@ -37,18 +37,21 @@ const MovieDetails = () => {
       {isLoading && <Loader />}
       {!isLoading && movieDetails && (
         <div>
-          <section>
+          <section className="section">
             <img
+              className="section__img"
               src={`https://image.tmdb.org/t/p/w300/${movieDetails.poster_path}`}
               alt={movieDetails.title}
             />
             <div>
-              <h2>{movieDetails.title}</h2>
-              <p>User Score: {movieDetails.vote_average}</p>
-              <h3>Overview</h3>
-              <p>{movieDetails.overview}</p>
-              <h3>Genres</h3>
-              <p>{movieDetails.genres.map(genre => genre.name).join(', ')}</p>
+              <h2 className="title-info">{movieDetails.title}</h2>
+              <p className="info">User Score: {movieDetails.vote_average}</p>
+              <h3 className="title-info">Overview</h3>
+              <p className="info">{movieDetails.overview}</p>
+              <h3 className="title-info">Genres</h3>
+              <p className="info">
+                {movieDetails.genres.map(genre => genre.name).join(', ')}
+              </p>
             </div>
           </section>
           <hr />

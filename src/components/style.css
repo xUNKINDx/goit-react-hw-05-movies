@@ -1,0 +1,95 @@
+.header-nav {
+  display: flex;
+  justify-content: center;
+  background-image: url(../images/heder_for_site_0016-300x94.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-bottom: 2px solid #000000;
+}
+
+.nav-link {
+  margin: 30px;
+  padding: 0 15px;
+  color: rgb(0, 0, 0);
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.88;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  transition-property: color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-link:hover,
+.nav-link:focus {
+  color: rgb(255, 0, 0);
+}
+
+.form-block {
+  margin: 15px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.form-block__input {
+  width: 45%;
+  height: 20px;
+}
+
+.form-block__submit {
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.movies-list {
+  display: flex;
+  margin-left: 50px;
+}
+
+.movie {
+  color: aqua;
+}
+
+.section {
+  display: flex;
+}
+
+.section__img {
+  margin: 15px 15px 15px 50px;
+}
+
+.title-info {
+  margin-bottom: 10px;
+}
+
+.info {
+  border-bottom: 2px solid #000000;
+}
+
+.main-title {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.cast {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.cast__list {
+  margin: 40px 20px;
+  font-size: 24px;
+}
+
+.cast__img {
+  width: 150px;
+  height: 220px;
+}
+
+.cast__txt {
+  font-size: 16px;
+  max-width: 150px;
+}

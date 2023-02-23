@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getCast } from 'movieDbAPI/movieDbAPI';
 import Loader from 'components/Loader/Loader';
+import defaultProfileImage from '../../../images/defaultProfile.png';
 
 const Cast = () => {
   const [cast, setCast] = useState(null);
@@ -33,17 +34,21 @@ const Cast = () => {
       <section>
         {isLoading && <Loader />}
         {!isLoading && cast && (
-          <ul>
+          <ul className="cast">
             {cast.map(person => (
-              <li key={person.id}>
-                <div>
-                  <img
-                    src={`https://image.tmdb.org/t/p/w300/${person.profile_path}`}
-                    alt={person.name}
-                  />
-                  <p>{person.name}</p>
-                  <p>Character: {person.character}</p>
-                </div>
+              <li className="cast__list" key={person.id}>
+                <img
+                  className="cast__img"
+                  src={
+                    person.profile_path
+                      ? `https://image.tmdb.org/t/p/w300/${person.profile_path}`
+                      : defaultProfileImage
+                  }
+                  alt={person.name}
+                />
+
+                <p className="cast__txt">{person.name}</p>
+                <p className="cast__txt">Character: {person.character}</p>
               </li>
             ))}
           </ul>
