@@ -32,8 +32,11 @@ const Cast = () => {
     <>
       <hr />
       <section>
-        {isLoading && <Loader />}
-        {!isLoading && cast && (
+        {isLoading ? (
+          <Loader />
+        ) : cast === null || cast.length === 0 ? (
+          <p>There is no cast for this movie yet</p>
+        ) : (
           <ul className="cast">
             {cast.map(person => (
               <li className="cast__list" key={person.id}>

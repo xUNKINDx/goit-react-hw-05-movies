@@ -31,8 +31,11 @@ const Reviews = () => {
     <>
       <hr />
       <section>
-        {isLoading && <Loader />}
-        {!isLoading && reviews && (
+        {isLoading ? (
+          <Loader />
+        ) : reviews === null || reviews.length === 0 ? (
+          <p>We don't have any reviews for this movie</p>
+        ) : (
           <ul>
             {reviews.map(review => (
               <li key={review.id}>

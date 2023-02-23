@@ -11,7 +11,6 @@ const Movies = () => {
   const query = searchParams.get('query');
   useEffect(() => {
     if (query && query.length > 0) {
-      console.log(query);
       const getMovies = async () => {
         setIsLoading(true);
 

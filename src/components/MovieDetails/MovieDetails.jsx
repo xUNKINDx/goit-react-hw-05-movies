@@ -6,10 +6,10 @@ import Loader from 'components/Loader/Loader';
 const MovieDetails = () => {
   const [movieDetails, setMovieDetail] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [backLinkHref, setBackLinkHref] = useState(null);
 
   const { movieId } = useParams();
   const location = useLocation();
-  const backLinkHref = location.state?.from ?? '/';
 
   useEffect(() => {
     const loadMovieDetails = async () => {
@@ -26,6 +26,13 @@ const MovieDetails = () => {
     };
 
     loadMovieDetails().then(result => setMovieDetail(result));
+    // eslint-disable-next-line
+  }, []);
+
+  useEffect(() => {
+    if (!backLinkHref) {
+      setBackLinkHref(location.state?.from ?? '/');
+    }
     // eslint-disable-next-line
   }, []);
 
