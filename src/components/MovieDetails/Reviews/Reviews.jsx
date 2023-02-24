@@ -4,7 +4,7 @@ import { getReviews } from 'movieDbAPI/movieDbAPI';
 import Loader from 'components/Loader/Loader';
 
 const Reviews = () => {
-  const [reviews, setReviews] = useState(null);
+  const [reviews, setReviews] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   const { movieId } = useParams();
@@ -24,8 +24,7 @@ const Reviews = () => {
     };
 
     loadReviews().then(result => setReviews(result.results));
-    // eslint-disable-next-line
-  }, []);
+  }, [movieId]);
 
   return (
     <>
@@ -33,7 +32,7 @@ const Reviews = () => {
       <section>
         {isLoading ? (
           <Loader />
-        ) : reviews === null || reviews.length === 0 ? (
+        ) : reviews.length === 0 ? (
           <p>We don't have any reviews for this movie</p>
         ) : (
           <ul>

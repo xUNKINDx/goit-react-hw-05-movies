@@ -5,7 +5,7 @@ import Loader from 'components/Loader/Loader';
 import defaultProfileImage from '../../../images/defaultProfile.png';
 
 const Cast = () => {
-  const [cast, setCast] = useState(null);
+  const [cast, setCast] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   const { movieId } = useParams();
@@ -25,8 +25,7 @@ const Cast = () => {
     };
 
     loadCast().then(result => setCast(result.cast));
-    // eslint-disable-next-line
-  }, []);
+  }, [movieId]);
 
   return (
     <>
@@ -34,7 +33,7 @@ const Cast = () => {
       <section>
         {isLoading ? (
           <Loader />
-        ) : cast === null || cast.length === 0 ? (
+        ) : cast.length === 0 ? (
           <p>There is no cast for this movie yet</p>
         ) : (
           <ul className="cast">

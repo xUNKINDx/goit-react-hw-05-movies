@@ -8,7 +8,7 @@ const MovieDetails = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [backLinkHref, setBackLinkHref] = useState(null);
 
-  const { movieId } = useParams();
+  const { movieId } = useParams();  
   const location = useLocation();
 
   useEffect(() => {
@@ -26,15 +26,13 @@ const MovieDetails = () => {
     };
 
     loadMovieDetails().then(result => setMovieDetail(result));
-    // eslint-disable-next-line
-  }, []);
+  }, [movieId]);
 
   useEffect(() => {
     if (!backLinkHref) {
       setBackLinkHref(location.state?.from ?? '/');
     }
-    // eslint-disable-next-line
-  }, []);
+  }, [backLinkHref, location]);
 
   return (
     <>

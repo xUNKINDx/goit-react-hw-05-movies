@@ -38,7 +38,7 @@ const Home = () => {
             trendingMovies &&
             trendingMovies.map(movie => (
               <li key={movie.id}>
-                <Link to={`movies/${movie.id}`} state={{ from: '/' }}>
+                <Link to={`movies/${movie.id}`}>
                   {movie.title}
                 </Link>
               </li>
